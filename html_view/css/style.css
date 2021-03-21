@@ -1,0 +1,246 @@
+/*Обнуление*/
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+/*--------------------*/
+body {
+	height: 100%;
+}
+.header__top {
+	background-color: #343434;
+}
+.header__burger {
+	display: none;
+}
+.header__menu {
+	text-align: right;
+}
+.header__menu__list {
+	position: relative;
+	top: 20%;
+}
+.header__menu__list li {
+	display: inline;
+	margin-left: 10px;
+	font-size: 18px;
+}
+.header__menu__list li a,
+.header__title h1 a{
+	color: #fff;
+}
+.header__menu__list li a:hover,
+.header__title h1 a:hover{
+	color: red;
+	text-decoration: none;
+}
+.main__list-company__title {
+	margin-bottom: 15px;
+}
+.main__list-company__title a{
+	text-decoration: none;
+	color: #000;
+}
+.main__list-company__title a:hover{
+	text-decoration: none;
+	color: red;
+}
+.main__list-company__item {
+	margin-top: 20px;
+}
+.add-company {
+	margin-top: 40px;
+	padding: 20px;
+	background-color: #E6E2EB;
+	border-radius: 1%;
+}
+.add-company__form {
+	display: none;
+}
+.add-company__form__menu li {
+	margin-top: 20px;
+}
+.add-company__form__menu li input{
+	height: 40px;
+}
+.add-company__button button span,
+.add-company__form__button button span{
+	font-size: 18px;
+}
+.company {
+	margin-top: 20px;
+	text-align: center;
+	font-size: 24px;
+}
+.company__info__title {
+	font-size: 36px;
+}
+.comment__open-closed {
+	font-size: 40px;
+}
+#plus:hover, #minus:hover {
+	cursor: pointer;
+}
+.comment__open-closed__number {
+	text-align: right;
+}
+.comment {
+	background-color: #BAE3E1;
+	margin-top: 60px;
+}
+.comment__form {
+	padding: 20px;
+	display: none;
+}
+.reviews {
+	margin-top: 30px;
+	padding: 20px;
+	background-color: #BAE3E1;
+}
+.reviews__area {
+	margin-bottom: 40px;
+}
+.reviews__user,
+.reviews__time {
+	font-size: 18px;
+	font-style: italic;
+}
+.reviews__text {
+	margin-top: 10px;
+}
+.login, .auth {
+	margin-top: 30px;
+}
+.main__no-register-message {
+	text-align: center;
+	margin-top: 20px;
+}
+@media (max-width: 991px) {
+	.add-company__button button span,
+	.add-company__form__button button span{
+		font-size: 16px;
+	}
+	.add-company__form__menu li input{
+		height: 30px;
+	}
+}
+@media (max-width: 767px) {
+	.header__menu__list {
+		top: 25%;
+	}
+	.comment__open-closed {
+		font-size: 25px;
+	}
+	.lock {
+		overflow: hidden;
+	}
+	.header__title {
+		position: relative;
+		z-index: 10;
+	}
+	.header__title h1 {
+		font-size: 24px;
+	}
+	.header__burger {
+		display: block;
+		position: relative;
+		width: 30px;
+		height: 20px;
+		z-index: 5;
+		left: 90%;
+		top: 20%;
+	}
+	.header__burger:before,
+	.header__burger:after {
+		content: '';
+		background-color: #fff;
+		position: absolute;
+		width: 100%;
+		height: 2px;
+		left: 0;
+		transition: all 0.3s ease 0s;
+	}
+	.header__burger:before {
+		top: 0;
+	}
+	.header__burger:after {
+		bottom: 0;
+	}
+	.header__burger span {
+		position: absolute;
+		background-color: #fff;
+		left: 0;
+		height: 2px;
+		top: 9px;
+		width: 100%;
+		transition: all 0.3s ease 0s;
+	}
+	.header__burger.active span {
+		transform: scale(0);
+	}
+	.header__burger.active:before {
+		transform: rotate(45deg);
+		top: 9px;
+	}
+	.header__burger.active:after {
+		transform: rotate(-45deg);
+		bottom: 9px;
+	}
+	.header__menu__list {
+		position: fixed;
+		top: -100%;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		overflow: auto;
+		transition: all 0.3s ease 0s;
+		background-color: #343434;
+		padding: 70px 10px 20px 10px;
+		z-index: 3;
+	}
+	.header__menu__list.active {
+		top: 0;
+	}
+	.header__menu__list li {
+		display: block;
+		text-align: center;
+	}
+	.header__menu__list li a{
+		font-size: 24px;
+	}
+	.main__list-company__item {
+
+	}
+}
