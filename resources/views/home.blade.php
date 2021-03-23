@@ -8,7 +8,7 @@
                     @foreach($company as $item)
                 <div class="main__list-company__item col-md-4 col-sm-4 col-12">
                     <h2 class="main__list-company__title">
-                        <a href="{{ $item->alias }}">{{ $item->title }}</a>
+                        <a href="company/{{ $item->alias }}">{{ $item->title }}</a>
                     </h2>
                     <span class="main__list-company__description">{{ $item->description }}</span>
                 </div>
@@ -18,31 +18,33 @@
         </div>
     </div>
     <div class="container">
+        @if(auth()->check())
         <div class="row">
             <div class="add-company col-md-12 col-sm-12 col-12">
                 <div class="add-company__button">
                     <button class="btn btn-info"><span id="add-company-span">Добавить компанию</span></button>
                 </div>
-                <form class="add-company__form" action="#" method="post">
+                <form class="add-company__form" action="{{ route('company.create') }}" method="post">
+                    @csrf
                     <div class="add-company__form__unput">
                         <ul class="add-company__form__menu">
                             <li>
-                                <input type="text" class="form-control" placeholder="Название компании">
+                                <input type="text" name="title" class="form-control" placeholder="Название компании">
                             </li>
                             <li>
-                                <input type="text" class="form-control" placeholder="Инн">
+                                <input type="text" name="inn" class="form-control" placeholder="Инн">
                             </li>
                             <li>
-                                <input type="text" class="form-control" placeholder="О компании">
+                                <input type="text" name="description" class="form-control" placeholder="О компании">
                             </li>
                             <li>
-                                <input type="text" class="form-control" placeholder="ФИО генерального директора">
+                                <input type="text" name="general" class="form-control" placeholder="ФИО генерального директора">
                             </li>
                             <li>
-                                <input type="text" class="form-control" placeholder="Адрес">
+                                <input type="text" name="location" class="form-control" placeholder="Адрес">
                             </li>
                             <li>
-                                <input type="tel" class="form-control" placeholder="Телефон">
+                                <input type="tel" name="phone" class="form-control" placeholder="Телефон">
                             </li>
                         </ul>
                     </div>
@@ -52,10 +54,12 @@
                 </form>
             </div>
         </div>
-        <div class="row">
-            <!-- 				<div class="main__no-register-message col-md-12">
-                                <h3><a href="#">Зарегистрируйтесь</a> для добавления комментариев</h3>
-                            </div>
-                        </div> -->
+        @else
+         <div class="row">
+                <div class="main__no-register-message col-md-12">
+                    <h3><a href="{{ route('register.create') }}">Зарегистрируйтесь</a> для добавления комментариев</h3>
+                </div>
+            </div>
+        @endif
         </div>
 @endsection

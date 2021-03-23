@@ -24,7 +24,7 @@ class CompanyFactory extends Factory
         return [
             'title' => $this->faker->company(),
             'description' => $this->faker->paragraph(1),
-            'alias' => strtolower(str_replace(' ', '_', $this->faker->company())),
+            'alias' => strtolower(str_replace(' ', '-', $this->faker->company())),
             'general' => $this->faker->name(),
             'location' => $this->faker->city(),
             'inn' => $this->faker->randomNumber(),

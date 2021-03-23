@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@section('title')Document @show</title>
+    <base href="/"></base>
     <link rel="stylesheet" href="public/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -46,6 +47,15 @@
     </div>
 </header>
 <div class="flash-message">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
         @if(session($msg))
             <p class="alert alert-{{ $msg }}">{{ session($msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
