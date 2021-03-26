@@ -11,7 +11,9 @@ class Note extends Model
 
     protected $fillable = [
         'company_field',
+        'company_id',
         'user_id',
         'text',
     ];
+
 }

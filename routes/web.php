@@ -18,15 +18,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/company/{alias}', [CompanyController::class, 'index'])->name('single_company');
+Route::get('/company/{alias}', [CompanyController::class, 'index'])->name('company.index');
 Route::group(['middleware' => 'guest'], function() {
-    Route::get('/login', [UserController::class, 'loginForm'])->name('login.create');
-    Route::post('/login', [UserController::class, 'login'])->name('login');
-    Route::get('/register', [UserController::class, 'create'])->name('register.create');
-    Route::post('/register', [UserController::class, 'store'])->name('store');
+    Route::get('/login', [UserController::class, 'loginForm'])->name('users.create-login');
+    Route::post('/login', [UserController::class, 'login'])->name('users.login');
+    Route::get('/register', [UserController::class, 'registerForm'])->name('users.create-register');
+    Route::post('/register', [UserController::class, 'register'])->name('users.register');
 });
 Route::group(['middleware' => 'auth'], function() {
-   Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+   Route::get('/logout', [UserController::class, 'logout'])->name('users.logout');
    Route::post('/company', [CompanyController::class, 'create'])->name('company.create');
-   Route::post('/note', [NoteController::class, 'create'])->name('note');
+   Route::post('/note', [NoteController::class, 'create'])->name('note.create');
 });

@@ -19,4 +19,9 @@ class Company extends Model
         'alias',
     ];
 
+
+    public function notes()
+    {
+        return $this->hasMany('App\Models\Note');
+    }
 }

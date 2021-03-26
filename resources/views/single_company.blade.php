@@ -37,12 +37,12 @@
                             <span id="plus"> + </span><span id="minus"> - </span>
                         </div>
                         <div class="comment__open-closed__number col-md-9 col-sm-9 col-9">
-                            <span>Всего заметок: 25</span>
+                            <span>Всего заметок: {{ count($notes) }}</span>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <form class="comment__form" action="{{ route('note') }}" method="post">
+                    <form class="comment__form" action="{{ route('note.create') }}" method="post">
                         @csrf
                         <div class="row">
                             <div class="comment__form__title col-md-12 col-sm-12 col-12">
@@ -50,6 +50,7 @@
                             </div>
                         </div>
                         <div class="row">
+                            <input type="hidden" name="company_id" value="{{ $company->id }}">
                             <div class="comment__form__button col-md-12">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="note_radio" id="gridRadios1" value="1">
@@ -108,28 +109,37 @@
                     </div>
                 </div>
                 <div class="row">
+                    @if($notes)
+                        @foreach($notes as $note)
                     <div class="reviews__area col-md-12">
                         <div class="row">
-                            <div class="reviews__user col-md-1">
-                                <span>User</span>
+                            <div class="reviews__user col-md-2">
+                                <span>{{ Auth::user()->login }} </span>
+                                @foreach($fields as $field)
+                                    @if($field->id === $note->company_field)
+                                        ({{ $field->field }})
+                                    @endif
+                                @endforeach
                             </div>
-                            <div class="reviews__time col-md-2">
-                                <span>08-01-2001</span>
+                            <div class="reviews__time col-md-3">
+                                <span>{{ $note->created_at }}</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="reviews__text col-md-12">
-                                <p>text text text</p>
+                                <p>{{ $note->text }}</p>
                             </div>
                         </div>
                     </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
         @else
         <div class="row">
             <div class="main__no-register-message col-md-12">
-                <h3><a href="{{ route('register.create') }}">Зарегистрируйтесь</a> для оставления индивидуальных заметок</h3>
+                <h3><a href="{{ route('users.create-register') }}">Зарегистрируйтесь</a> для оставления индивидуальных заметок</h3>
             </div>
         </div>
         @endif

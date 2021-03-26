@@ -57,7 +57,7 @@
         @else
          <div class="row">
                 <div class="main__no-register-message col-md-12">
-                    <h3><a href="{{ route('register.create') }}">Зарегистрируйтесь</a> для добавления комментариев</h3>
+                    <h3><a href="{{ route('users.create-register') }}">Зарегистрируйтесь</a> для добавления комментариев</h3>
                 </div>
             </div>
         @endif

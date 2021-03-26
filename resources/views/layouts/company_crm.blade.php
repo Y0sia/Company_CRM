@@ -30,14 +30,14 @@
                         </li>
                         @if(auth()->check())
                             <li>
-                                <a href="{{ route('logout') }}">Выход</a>
+                                <a href="{{ route('users.logout') }}">Выход</a>
                             </li>
                         @else
                             <li>
-                                <a href="{{ route('login.create') }}">Вход</a>
+                                <a href="{{ route('users.create-login') }}">Вход</a>
                             </li>
                             <li>
-                                <a href="{{ route('register.create') }}">Регистрация</a>
+                                <a href="{{ route('users.create-register') }}">Регистрация</a>
                             </li>
                         @endif
                     </nav>

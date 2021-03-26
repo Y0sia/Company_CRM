@@ -16,7 +16,7 @@ class UserController extends Controller
         return view('login');
     }
 
-    public function create()
+    public function registerForm()
     {
         return view('register');
     }
@@ -26,7 +26,7 @@ class UserController extends Controller
      * @param  Register  $request
      */
 
-    public function store(Register $request)
+    public function register(Register $request)
     {
         $user = User::create([
             'login' => $request->login,

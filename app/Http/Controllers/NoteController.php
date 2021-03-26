@@ -15,11 +15,13 @@ class NoteController extends Controller
      */
     public function create(AddNote $request)
     {
-        dd($request->input());
         $note = Note::create([
             'user_id' => Auth::id(),
+            'company_id' => $request->company_id,
             'company_field' => $request->note_radio,
             'text' => $request->text,
         ]);
+
+        return redirect()->back()->with("success", "Заметка успешно добавлена!");
     }
 }

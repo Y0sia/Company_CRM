@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <form action="{{ route('login') }}" class="login col-md-12 col-sm-12 col-12" method="post">
+            <form action="{{ route('users.login') }}" class="login col-md-12 col-sm-12 col-12" method="post">
                 @csrf
                 <div class="login__input">
                     <div class="mb-3">
